@@ -10,7 +10,7 @@ export const CounterWithCustomHook = () => {
             <hr />
 
             <button 
-                onClick={increment}
+                onClick={ () => increment(2)}
                 className="btn btn-primary"
             >+1</button>
 
@@ -22,7 +22,7 @@ export const CounterWithCustomHook = () => {
 
             
             <button 
-                onClick={decrement}
+                onClick={ () => decrement(2)}
                 className="btn btn-primary"
             >-1</button>
 
