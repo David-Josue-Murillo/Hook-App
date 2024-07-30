@@ -19,8 +19,8 @@ export const SimpleForm = () => {
     }
 
     useEffect( () => {
-        
-    }, []);
+        console.log("FormState Changed!!!");
+    }, [formState]);
 
     return (
         <>
