@@ -1,19 +1,26 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 export const Message = () => {
 
+    const [coords, setfCoords] = useState({x: 0, y: 0})
+
+    const onMouseMove = ({x, y}) => {
+        setfCoords({x , y});
+    } 
+
     useEffect(() => {
-      first
-    
-      return () => {
-        second
+        window.addEventListener('mousemove', onMouseMove);
+        
+        return () => {
+        window.removeEventListener('mousemove', onMouseMove);
       }
-    }, [third])
+    }, []);
     
 
     return (
         <>
             <h3>Usuario ya existe</h3>
+            {JSON.stringify(coords)}
         </>
     )
 }
