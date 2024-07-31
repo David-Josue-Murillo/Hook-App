@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 
-export const useFetch = () => {
+export const useFetch = (url) => {
     
     const [state, setState] = useState({
         data: null,
@@ -12,11 +12,21 @@ export const useFetch = () => {
     useEffect(() => {
         getFetch();
 
-    }, [])
+    }, [url])
+
+    const setLoadiingState = () => {
+        setState({
+            data: null,
+            isLoading: true,
+            hasError: false,
+            error: null
+        })
+    }
     
     const getFetch = async () => {
-
-        const response = await fetch('https://pokeapi.co/api/v2/pokemon/1');
+        setLoadiingState();
+        
+        const response = await fetch(url);
 
         if(!response.ok) {
             setState({
