@@ -22,7 +22,7 @@ export const TodoAdd = ({ onNweTodo }) => {
 
     return (
         <form className="form-inline" onSubmit={onSubmit}>
-            <input type="text" className="form-control" placeholder="¿Que hay que hacer?" name="description" value={description} onChange={onInputChange} />
+            <input type="text" className="form-control" placeholder="¿Que anime conoces?" name="description" value={description} onChange={onInputChange} />
             <button type="submit" className="btn btn-outline-primary mt-3">Agregar</button>
         </form>
     )
