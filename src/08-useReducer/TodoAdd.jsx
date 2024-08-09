@@ -1,29 +1,44 @@
-import { useForm } from "../hooks/useForm"
+import { useForm } from '../hooks/useForm';
 
-export const TodoAdd = ({ onNweTodo }) => {
 
-    const {description, onInputChange, onResetForm} = useForm({
+export const TodoAdd = ({ onNewTodo }) => {
+
+    const { description, onInputChange, onResetForm } = useForm({
         description: ''
     });
 
-    const onSubmit = (e) => {
-        e.preventDefault();
-        if(description.length < 1) return; 
+    const onFormSubmit = ( event ) => {
+        event.preventDefault();
+        if ( description.length <= 1 ) return;
 
         const newTodo = {
             id: new Date().getTime(),
-            todo: description,
-            done: false
+            done: false,
+            description: description,
         }
 
+        onNewTodo(newTodo);
         onResetForm();
-        onNweTodo(newTodo);
     }
 
+
     return (
-        <form className="form-inline" onSubmit={onSubmit}>
-            <input type="text" className="form-control" placeholder="¿Que anime conoces?" name="description" value={description} onChange={onInputChange} />
-            <button type="submit" className="btn btn-outline-primary mt-3">Agregar</button>
+        <form onSubmit={ onFormSubmit }>
+            <input 
+                type="text" 
+                placeholder="¿Qué hay que hacer?"
+                className="form-control"
+                name="description"
+                value={ description }
+                onChange={ onInputChange }
+            />
+
+            <button 
+                type="submit"
+                className="btn btn-outline-primary mt-1"
+            >
+                Agregar
+            </button>
         </form>
     )
 }
